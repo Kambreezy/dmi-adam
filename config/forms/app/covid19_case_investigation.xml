@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+  <h:head>
+    <h:title>Covid19: Case Investigation</h:title>
+    <model>
+      <itext>
+        <translation lang="en">
+          <text id="/covid19_case_investigation/covid19_health_facility/facility_confirm_ask/no:label">
+            <value>No</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/facility_confirm_ask/yes:label">
+            <value>Yes</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/facility_confirm_ask:label">
+            <value>Are you at &quot;<output value=" /covid19_case_investigation/covid19_health_facility/facility_name "/>&quot; now?</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_address:label">
+            <value>Facility address</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_name:label">
+            <value>Facility name</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/community_home:label">
+            <value>Community: Home</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/community_other:label">
+            <value>Community: Other</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/community_workplace:label">
+            <value>Community: Workplace</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/healthcare_clinic:label">
+            <value>Healthcare: Clinic</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/healthcare_hospital:label">
+            <value>Healthcare: Hospital</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/healthcare_other:label">
+            <value>Healthcare: Other</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting:label">
+            <value>Facility type</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility/other_test_setting:label">
+            <value>Specify other</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_health_facility:label">
+            <value><output value=" /covid19_case_investigation/patient_name "/>: Health Facility</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/chills:label">
+            <value>Chills</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/cough:label">
+            <value>Cough</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/difficulty_breathing:label">
+            <value>Shortness of breath or difficulty breathing</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/fever:label">
+            <value>Fever</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/muscle_aches:label">
+            <value>Muscle Aches</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/other:label">
+            <value>Other symptoms (specify)</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/sore_throat:label">
+            <value>Sore Throat</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/tiredness:label">
+            <value>Tiredness</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical:label">
+            <value>Symptoms</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_date:label">
+            <value>When did the symptoms first appear?</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening/cv_symptoms_other:label">
+            <value>Other symptoms (separate using commas if multiple)</value>
+          </text>
+          <text id="/covid19_case_investigation/covid19_screening:label">
+            <value><output value=" /covid19_case_investigation/patient_name "/>: Screening</value>
+          </text>
+          <text id="/covid19_case_investigation/inputs/contact/_id:label">
+            <value>What is the patient's name?</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <covid19_case_investigation id="covid19_case_investigation" prefix="J1!covid19_case_investigation!" delimiter="#" version="1">
+          <inputs tag="hidden">
+            <source>user</source>
+            <contact>
+              <_id/>
+              <patient_id/>
+              <first_name/>
+              <last_name/>
+              <name/>
+              <date_of_birth/>
+              <sex/>
+              <phone/>
+              <phone_alternate/>
+              <address/>
+              <parent>
+                <_id/>
+                <name/>
+                <address/>
+                <parent>
+                  <_id/>
+                  <name/>
+                  <address/>
+                </parent>
+              </parent>
+            </contact>
+          </inputs>
+          <patient_uuid/>
+          <patient_name/>
+          <patient_age_in_years tag="hidden"/>
+          <patient_age_in_months tag="hidden"/>
+          <patient_age_in_days tag="hidden"/>
+          <age/>
+          <covid19_health_facility>
+            <facility_id/>
+            <facility_name/>
+            <facility_address/>
+            <facility_confirm_ask>yes</facility_confirm_ask>
+            <other_facility_name/>
+            <other_facility_address/>
+            <other_facility_test_setting/>
+            <other_test_setting/>
+          </covid19_health_facility>
+          <covid19_screening>
+            <cv_symptoms_date/>
+            <cv_symptoms_clinical/>
+            <cv_symptoms_other/>
+          </covid19_screening>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </covid19_case_investigation>
+      </instance>
+      <instance id="contact-summary"/>
+      <bind nodeset="/covid19_case_investigation/inputs" relevant="./source = 'user'"/>
+      <bind nodeset="/covid19_case_investigation/inputs/source" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/_id" type="db:person"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/patient_id" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/first_name" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/last_name" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/name" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/date_of_birth" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/sex" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/phone" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/phone_alternate" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/address" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/parent/_id" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/parent/name" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/parent/address" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/parent/parent/_id" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/parent/parent/name" type="string"/>
+      <bind nodeset="/covid19_case_investigation/inputs/contact/parent/parent/address" type="string"/>
+      <bind nodeset="/covid19_case_investigation/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/covid19_case_investigation/patient_name" type="string" calculate="../inputs/contact/name"/>
+      <bind nodeset="/covid19_case_investigation/patient_age_in_years" type="string" calculate="floor( difference-in-months(  /covid19_case_investigation/inputs/contact/date_of_birth , today() ) div 12 )"/>
+      <bind nodeset="/covid19_case_investigation/patient_age_in_months" type="string" calculate="difference-in-months(  /covid19_case_investigation/inputs/contact/date_of_birth , today() )"/>
+      <bind nodeset="/covid19_case_investigation/patient_age_in_days" type="string" calculate="floor(decimal-date-time(today()) - decimal-date-time( /covid19_case_investigation/inputs/contact/date_of_birth ) )"/>
+      <bind nodeset="/covid19_case_investigation/age" type="string" calculate="if( /covid19_case_investigation/patient_age_in_days  &lt; 31, 
+concat( /covid19_case_investigation/patient_age_in_days , ' days old'),
+if( /covid19_case_investigation/patient_age_in_months  &lt; 12, 
+concat( /covid19_case_investigation/patient_age_in_months , ' months old'), 
+concat( /covid19_case_investigation/patient_age_in_years , ' years old')))"/>
+      <bind nodeset="/covid19_case_investigation/covid19_health_facility/facility_id" type="string" calculate="if(../../inputs/contact/parent/_id != '', ../../inputs/contact/parent/_id)"/>
+      <bind nodeset="/covid19_case_investigation/covid19_health_facility/facility_name" type="string" calculate="if(../../inputs/contact/parent/_id != '', ../../inputs/contact/parent/name)"/>
+      <bind nodeset="/covid19_case_investigation/covid19_health_facility/facility_address" type="string" calculate="if(../../inputs/contact/parent/_id != '', ../../inputs/contact/parent/address)"/>
+      <bind nodeset="/covid19_case_investigation/covid19_health_facility/facility_confirm_ask" type="select1"/>
+      <bind nodeset="/covid19_case_investigation/covid19_health_facility/other_facility_name" type="string" relevant="selected(../facility_confirm_ask, 'no')"/>
+      <bind nodeset="/covid19_case_investigation/covid19_health_facility/other_facility_address" type="string" relevant="selected(../facility_confirm_ask, 'no')"/>
+      <bind nodeset="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting" type="select1" relevant="selected(../facility_confirm_ask, 'no')"/>
+      <bind nodeset="/covid19_case_investigation/covid19_health_facility/other_test_setting" type="string" relevant="(selected(../other_facility_test_setting , 'community_other') or selected(../other_facility_test_setting , 'healthcare_other'))"/>
+      <bind nodeset="/covid19_case_investigation/covid19_screening/cv_symptoms_date" type="date"/>
+      <bind nodeset="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical" type="select"/>
+      <bind nodeset="/covid19_case_investigation/covid19_screening/cv_symptoms_other" type="string" required="true()" relevant="selected( /covid19_case_investigation/covid19_screening/cv_symptoms_clinical , 'other')"/>
+      <bind nodeset="/covid19_case_investigation/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <group ref="/covid19_case_investigation/inputs">
+      <group appearance="field-list" ref="/covid19_case_investigation/inputs/contact">
+        <input appearance="db-object" ref="/covid19_case_investigation/inputs/contact/_id">
+          <label ref="jr:itext('/covid19_case_investigation/inputs/contact/_id:label')"/>
+        </input>
+        <group ref="/covid19_case_investigation/inputs/contact/parent">
+          <group ref="/covid19_case_investigation/inputs/contact/parent/parent"/>
+        </group>
+      </group>
+    </group>
+    <group appearance="field-list" ref="/covid19_case_investigation/covid19_health_facility">
+      <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility:label')"/>
+      <select1 ref="/covid19_case_investigation/covid19_health_facility/facility_confirm_ask">
+        <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/facility_confirm_ask:label')"/>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/facility_confirm_ask/yes:label')"/>
+          <value>yes</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/facility_confirm_ask/no:label')"/>
+          <value>no</value>
+        </item>
+      </select1>
+      <input ref="/covid19_case_investigation/covid19_health_facility/other_facility_name">
+        <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_name:label')"/>
+      </input>
+      <input ref="/covid19_case_investigation/covid19_health_facility/other_facility_address">
+        <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_address:label')"/>
+      </input>
+      <select1 ref="/covid19_case_investigation/covid19_health_facility/other_facility_test_setting">
+        <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_test_setting:label')"/>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/community_home:label')"/>
+          <value>community_home</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/community_workplace:label')"/>
+          <value>community_workplace</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/community_other:label')"/>
+          <value>community_other</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/healthcare_clinic:label')"/>
+          <value>healthcare_clinic</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/healthcare_hospital:label')"/>
+          <value>healthcare_hospital</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_facility_test_setting/healthcare_other:label')"/>
+          <value>healthcare_other</value>
+        </item>
+      </select1>
+      <input ref="/covid19_case_investigation/covid19_health_facility/other_test_setting">
+        <label ref="jr:itext('/covid19_case_investigation/covid19_health_facility/other_test_setting:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/covid19_case_investigation/covid19_screening">
+      <label ref="jr:itext('/covid19_case_investigation/covid19_screening:label')"/>
+      <input ref="/covid19_case_investigation/covid19_screening/cv_symptoms_date">
+        <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_date:label')"/>
+      </input>
+      <select ref="/covid19_case_investigation/covid19_screening/cv_symptoms_clinical">
+        <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical:label')"/>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/fever:label')"/>
+          <value>fever</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/cough:label')"/>
+          <value>cough</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/tiredness:label')"/>
+          <value>tiredness</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/difficulty_breathing:label')"/>
+          <value>difficulty_breathing</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/muscle_aches:label')"/>
+          <value>muscle_aches</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/chills:label')"/>
+          <value>chills</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/sore_throat:label')"/>
+          <value>sore_throat</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_clinical/other:label')"/>
+          <value>other</value>
+        </item>
+      </select>
+      <input ref="/covid19_case_investigation/covid19_screening/cv_symptoms_other">
+        <label ref="jr:itext('/covid19_case_investigation/covid19_screening/cv_symptoms_other:label')"/>
+      </input>
+    </group>
+  </h:body>
+</h:html>

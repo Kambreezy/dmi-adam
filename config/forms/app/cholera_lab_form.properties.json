@@ -1,0 +1,8 @@
+{
+  "title": "Cholera: Lab Form",
+  "icon": "icon-lab-outline-gray",
+  "context": {
+    "person": false,
+    "place": false
+  }
+}
