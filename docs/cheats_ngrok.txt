@@ -1,8 +1,0 @@
-https://197.181.10.188.local-ip.medicmobile.org
-
-ngrok-skip-browser-warning > header
-
-> ngrok http https://localhost
-> ngrok.exe http https://localhost
-> ngrok.exe http https://localhost:5432
-> ngrok.exe start --all
