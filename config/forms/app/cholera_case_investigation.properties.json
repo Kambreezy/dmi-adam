@@ -1,0 +1,8 @@
+{
+  "title": "Cholera: Case Investigation",
+  "icon": "icon-investigation-outline-gray",
+  "context": {
+    "person": false,
+    "place": false
+  }
+}

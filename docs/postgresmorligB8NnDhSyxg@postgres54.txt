@@ -1,0 +1,2 @@
+ postgres://morlig:B8NnDhSyxg@postgres:5432/cht_adam
+ postgres://morlig:B8NnDhSyxg@localhost:5432/cht_adam

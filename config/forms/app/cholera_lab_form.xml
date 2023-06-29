@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+  <h:head>
+    <h:title>Cholera: Lab Form</h:title>
+    <model>
+      <itext>
+        <translation lang="en">
+          <text id="/cholera_lab_form/inputs/contact/_id:label">
+            <value>What is the patient's name?</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_lab_tests/rapid_cholera_dipstick:label">
+            <value>Rapid Cholera Dipstick</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_lab_tests/stool_test:label">
+            <value>Stool Test</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_lab_tests:label">
+            <value>Tests Performed?</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_result/inconclusive:label">
+            <value>Inconclusive</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_result/negative:label">
+            <value>Negative</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_result/positive:label">
+            <value>Positive</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_result:label">
+            <value>Results</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_samples/stool:label">
+            <value>Stool</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default/lf_samples:label">
+            <value>Samples Collected</value>
+          </text>
+          <text id="/cholera_lab_form/lf_default:label">
+            <value><output value=" /cholera_lab_form/patient_name "/></value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <cholera_lab_form id="cholera_lab_form" prefix="J1!cholera_lab_form!" delimiter="#" version="1">
+          <inputs tag="hidden">
+            <source>user</source>
+            <contact>
+              <_id/>
+              <patient_id/>
+              <first_name/>
+              <last_name/>
+              <name/>
+              <date_of_birth/>
+              <sex/>
+              <phone/>
+              <phone_alternate/>
+              <address/>
+              <parent>
+                <_id/>
+                <name/>
+                <address/>
+                <parent>
+                  <_id/>
+                  <name/>
+                  <address/>
+                </parent>
+              </parent>
+            </contact>
+          </inputs>
+          <patient_uuid/>
+          <patient_name/>
+          <patient_age_in_years tag="hidden"/>
+          <patient_age_in_months tag="hidden"/>
+          <patient_age_in_days tag="hidden"/>
+          <age/>
+          <lf_default>
+            <facility_id/>
+            <facility_name/>
+            <facility_address/>
+            <lf_samples/>
+            <lf_lab_tests/>
+            <lf_result/>
+          </lf_default>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </cholera_lab_form>
+      </instance>
+      <instance id="contact-summary"/>
+      <bind nodeset="/cholera_lab_form/inputs" relevant="./source = 'user'"/>
+      <bind nodeset="/cholera_lab_form/inputs/source" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/_id" type="db:person"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/patient_id" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/first_name" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/last_name" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/name" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/date_of_birth" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/sex" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/phone" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/phone_alternate" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/address" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/parent/_id" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/parent/name" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/parent/address" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/parent/parent/_id" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/parent/parent/name" type="string"/>
+      <bind nodeset="/cholera_lab_form/inputs/contact/parent/parent/address" type="string"/>
+      <bind nodeset="/cholera_lab_form/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/cholera_lab_form/patient_name" type="string" calculate="../inputs/contact/name"/>
+      <bind nodeset="/cholera_lab_form/patient_age_in_years" type="string" calculate="floor( difference-in-months(  /cholera_lab_form/inputs/contact/date_of_birth , today() ) div 12 )"/>
+      <bind nodeset="/cholera_lab_form/patient_age_in_months" type="string" calculate="difference-in-months(  /cholera_lab_form/inputs/contact/date_of_birth , today() )"/>
+      <bind nodeset="/cholera_lab_form/patient_age_in_days" type="string" calculate="floor(decimal-date-time(today()) - decimal-date-time( /cholera_lab_form/inputs/contact/date_of_birth ) )"/>
+      <bind nodeset="/cholera_lab_form/age" type="string" calculate="if( /cholera_lab_form/patient_age_in_days  &lt; 31, 
+concat( /cholera_lab_form/patient_age_in_days , ' days old'),
+if( /cholera_lab_form/patient_age_in_months  &lt; 12, 
+concat( /cholera_lab_form/patient_age_in_months , ' months old'), 
+concat( /cholera_lab_form/patient_age_in_years , ' years old')))"/>
+      <bind nodeset="/cholera_lab_form/lf_default/facility_id" type="string" calculate="if(../../inputs/contact/parent/_id != '', ../../inputs/contact/parent/_id)"/>
+      <bind nodeset="/cholera_lab_form/lf_default/facility_name" type="string" calculate="if(../../inputs/contact/parent/_id != '', ../../inputs/contact/parent/name)"/>
+      <bind nodeset="/cholera_lab_form/lf_default/facility_address" type="string" calculate="if(../../inputs/contact/parent/_id != '', ../../inputs/contact/parent/address)"/>
+      <bind nodeset="/cholera_lab_form/lf_default/lf_samples" type="select" required="true()"/>
+      <bind nodeset="/cholera_lab_form/lf_default/lf_lab_tests" type="select" required="true()"/>
+      <bind nodeset="/cholera_lab_form/lf_default/lf_result" type="select1" required="true()"/>
+      <bind nodeset="/cholera_lab_form/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <group ref="/cholera_lab_form/inputs">
+      <group appearance="field-list" ref="/cholera_lab_form/inputs/contact">
+        <input appearance="db-object" ref="/cholera_lab_form/inputs/contact/_id">
+          <label ref="jr:itext('/cholera_lab_form/inputs/contact/_id:label')"/>
+        </input>
+        <group ref="/cholera_lab_form/inputs/contact/parent">
+          <group ref="/cholera_lab_form/inputs/contact/parent/parent"/>
+        </group>
+      </group>
+    </group>
+    <group appearance="field-list" ref="/cholera_lab_form/lf_default">
+      <label ref="jr:itext('/cholera_lab_form/lf_default:label')"/>
+      <select ref="/cholera_lab_form/lf_default/lf_samples">
+        <label ref="jr:itext('/cholera_lab_form/lf_default/lf_samples:label')"/>
+        <item>
+          <label ref="jr:itext('/cholera_lab_form/lf_default/lf_samples/stool:label')"/>
+          <value>stool</value>
+        </item>
+      </select>
+      <select ref="/cholera_lab_form/lf_default/lf_lab_tests">
+        <label ref="jr:itext('/cholera_lab_form/lf_default/lf_lab_tests:label')"/>
+        <item>
+          <label ref="jr:itext('/cholera_lab_form/lf_default/lf_lab_tests/stool_test:label')"/>
+          <value>stool_test</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/cholera_lab_form/lf_default/lf_lab_tests/rapid_cholera_dipstick:label')"/>
+          <value>rapid_cholera_dipstick</value>
+        </item>
+      </select>
+      <select1 ref="/cholera_lab_form/lf_default/lf_result">
+        <label ref="jr:itext('/cholera_lab_form/lf_default/lf_result:label')"/>
+        <item>
+          <label ref="jr:itext('/cholera_lab_form/lf_default/lf_result/positive:label')"/>
+          <value>positive</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/cholera_lab_form/lf_default/lf_result/negative:label')"/>
+          <value>negative</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/cholera_lab_form/lf_default/lf_result/inconclusive:label')"/>
+          <value>inconclusive</value>
+        </item>
+      </select1>
+    </group>
+  </h:body>
+</h:html>

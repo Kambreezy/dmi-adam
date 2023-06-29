@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+  <h:head>
+    <h:title>Contact Tracing</h:title>
+    <model>
+      <itext>
+        <translation lang="en">
+          <text id="/contact_tracing/contact_tracing/ct_traced/no:label">
+            <value>No</value>
+          </text>
+          <text id="/contact_tracing/contact_tracing/ct_traced/yes:label">
+            <value>Yes</value>
+          </text>
+          <text id="/contact_tracing/contact_tracing/ct_traced:label">
+            <value>Contact Traced?</value>
+          </text>
+          <text id="/contact_tracing/contact_tracing:label">
+            <value><output value=" /contact_tracing/patient_name "/>: Hospitalization</value>
+          </text>
+          <text id="/contact_tracing/inputs/contact/_id:label">
+            <value>What is the patient's name?</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <contact_tracing id="contact_tracing" prefix="J1!contact_tracing!" delimiter="#" version="1">
+          <inputs tag="hidden">
+            <source>user</source>
+            <contact>
+              <_id/>
+              <patient_id/>
+              <first_name/>
+              <last_name/>
+              <name/>
+              <parent>
+                <_id/>
+                <name/>
+                <address/>
+                <parent>
+                  <_id/>
+                  <name/>
+                  <address/>
+                  <parent>
+                    <_id/>
+                    <name/>
+                    <address/>
+                  </parent>
+                </parent>
+              </parent>
+            </contact>
+          </inputs>
+          <patient_uuid/>
+          <patient_name/>
+          <contact_tracing>
+            <ct_traced/>
+          </contact_tracing>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </contact_tracing>
+      </instance>
+      <instance id="contact-summary"/>
+      <bind nodeset="/contact_tracing/inputs" relevant="./source = 'user'"/>
+      <bind nodeset="/contact_tracing/inputs/source" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/_id" type="db:person"/>
+      <bind nodeset="/contact_tracing/inputs/contact/patient_id" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/first_name" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/last_name" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/name" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/_id" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/name" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/address" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/parent/_id" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/parent/name" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/parent/address" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/parent/parent/_id" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/parent/parent/name" type="string"/>
+      <bind nodeset="/contact_tracing/inputs/contact/parent/parent/parent/address" type="string"/>
+      <bind nodeset="/contact_tracing/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/contact_tracing/patient_name" type="string" calculate="../inputs/contact/name"/>
+      <bind nodeset="/contact_tracing/contact_tracing/ct_traced" type="select1"/>
+      <bind nodeset="/contact_tracing/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <group ref="/contact_tracing/inputs">
+      <group appearance="field-list" ref="/contact_tracing/inputs/contact">
+        <input appearance="db-object" ref="/contact_tracing/inputs/contact/_id">
+          <label ref="jr:itext('/contact_tracing/inputs/contact/_id:label')"/>
+        </input>
+        <group ref="/contact_tracing/inputs/contact/parent">
+          <group ref="/contact_tracing/inputs/contact/parent/parent">
+            <group ref="/contact_tracing/inputs/contact/parent/parent/parent"/>
+          </group>
+        </group>
+      </group>
+    </group>
+    <group appearance="field-list" ref="/contact_tracing/contact_tracing">
+      <label ref="jr:itext('/contact_tracing/contact_tracing:label')"/>
+      <select1 ref="/contact_tracing/contact_tracing/ct_traced">
+        <label ref="jr:itext('/contact_tracing/contact_tracing/ct_traced:label')"/>
+        <item>
+          <label ref="jr:itext('/contact_tracing/contact_tracing/ct_traced/yes:label')"/>
+          <value>yes</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/contact_tracing/contact_tracing/ct_traced/no:label')"/>
+          <value>no</value>
+        </item>
+      </select1>
+    </group>
+  </h:body>
+</h:html>
