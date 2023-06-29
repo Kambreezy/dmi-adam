@@ -1,0 +1,74 @@
+{
+  "messages-en": {
+    "localhost/medic": "YTDA98i1kFch3denA3Kqhw=="
+  },
+  "form:contact:clinic:create": {
+    "localhost/medic": "C3MdHtTyaoHJQX8e+1nabw=="
+  },
+  "form:contact:clinic:edit": {
+    "localhost/medic": "aPR7LHb77IlzYjbsq2shkA=="
+  },
+  "form:contact:district_hospital:create": {
+    "localhost/medic": "4zqJpyjfG24xXwO08kwBQQ=="
+  },
+  "form:contact:district_hospital:edit": {
+    "localhost/medic": "EKhZzsq5twhduUgRBsMwJw=="
+  },
+  "form:contact:health_center:create": {
+    "localhost/medic": "u7nHhxncWrN8YDlrsgc+zA=="
+  },
+  "form:contact:health_center:edit": {
+    "localhost/medic": "DwfpvMbqhnElDtuDLQTr/g=="
+  },
+  "form:contact:person:create": {
+    "localhost/medic": "2aKlIxl2nmoacQkRE8QsFQ=="
+  },
+  "form:contact:person:edit": {
+    "localhost/medic": "ozqJQX6PuDicE8t0g0th3g=="
+  },
+  "form:ci_cholera": {
+    "localhost/medic": "1W1bh3ET+UWAnd20ppB70g=="
+  },
+  "form:covid19_rdt_capture": {
+    "localhost/medic": "L8HW4bXlrTA/YaGijzlMIw=="
+  },
+  "form:covid19_rdt_provision": {
+    "localhost/medic": "7IzvHUMNDOc0GSqBiD0RSg=="
+  },
+  "resources": {
+    "localhost/medic": "vOM+U8jyshGcWXL1c8lDlg=="
+  },
+  "form:adam_lab_report": {
+    "localhost/medic": "9s14ers0Q8TpVaaDWhm4sQ=="
+  },
+  "form:cholera_lab_report": {
+    "localhost/medic": "Vm1T18aLQFJwpCtjsHMrVQ=="
+  },
+  "form:cholera_case_management": {
+    "localhost/medic": "bFWOPms3+Q67le3CUn+arQ=="
+  },
+  "form:cholera_case_investigation": {
+    "localhost/medic": "bq5tln2Wky6yCyEPdXu8Qw=="
+  },
+  "form:covid19_case_investigation": {
+    "localhost/medic": "68qsu/9xVdKrc1v1Pvo+SA=="
+  },
+  "form:cholera_lab_form": {
+    "localhost/medic": "M6yhnjmSGx2boabAACpuTQ=="
+  },
+  "form:patient_contact": {
+    "localhost/medic": "KYgHD/8hvbOTHDzfrFsyUw=="
+  },
+  "form:contact:person_contact:create": {
+    "localhost/medic": "+sZQG4JBd6nAeP+4LSvZ3Q=="
+  },
+  "form:contact:person_contact:edit": {
+    "localhost/medic": "XQ2h+6zro+Fz0Gm0oUw/Tg=="
+  },
+  "form:contact:patient_contact:create": {
+    "localhost/medic": "F57eEkvPcyQOE4qTFE6cXQ=="
+  },
+  "form:contact_tracing": {
+    "localhost/medic": "QNZaTeYCPTAb4Tb/b3swcw=="
+  }
+}

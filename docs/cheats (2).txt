@@ -1,0 +1,67 @@
+#Kill all other instances
+docker kill $(docker ps -a -q)
+
+#Init blank project
+cht initialise-project-layout
+
+#Launch instance
+>> CHT_COMPOSE_PROJECT_NAME=app-devl COUCHDB_SECRET=foo DOCKER_CONFIG_PATH=${PWD} COUCHDB_DATA=${PWD}/couchd CHT_COMPOSE_PATH=${PWD} COUCHDB_USER=medic COUCHDB_PASSWORD=password docker-compose u
+>> docker-compose up #this requires a .env file in the dir
+
+#Get docker yml files
+mkdir  ~/cht-4-app-developer && cd ~/cht-4-app-developer
+curl -sZ -o docker-compose.yml https://raw.githubusercontent.com/medic/cht-upgrade-service/main/docker-compose.yml
+curl -s -o cht-core.yml https://staging.dev.medicmobile.org/_couch/builds_4/medic%3Amedic%3Amaster/docker-compose/cht-core.yml
+curl -s -o cht-couchdb.yml https://staging.dev.medicmobile.org/_couch/builds_4/medic%3Amedic%3Amaster/docker-compose/cht-couchdb.yml
+
+#Convert, build and upload app,contact forms
+cht --local convert-app-forms upload-app-forms
+cht --local convert-contact-forms upload-contact-forms
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 convert-app-forms upload-app-forms --accept-self-signed-certs
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 convert-contact-forms upload-contact-forms --accept-self-signed-certs
+
+#Remove forms
+cht --local delete-forms -- *my_form_name*
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 delete-all-forms --accept-self-signed-certs
+> cht --url=https://medic:2e64k1b65N@localhost:8444 delete-forms -- e --accept-self-signed-certs
+
+#Convert and upload contact forms
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 convert-contact-forms upload-contact-forms --accept-self-signed-certs
+
+#Convert and upload app forms
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 convert-app-forms upload-app-forms --accept-self-signed-certs
+
+#Convert and upload app&contact forms
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 convert-contact-forms convert-app-forms upload-contact-forms upload-app-forms --accept-self-signed-certs
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 delete-all-forms convert-contact-forms convert-app-forms upload-contact-forms upload-app-forms --accept-self-signed-certs
+
+#Upload resources (icons,json)
+#Run from project dir e.g. eins.icap
+cht --url=https://<username>:<password>@localhost --accept-self-signed-certs upload-resources
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 --accept-self-signed-certs upload-resources
+
+#Upload app settings (app_settings.json)
+cht --url=https://<username>:<password>@localhost --accept-self-signed-certs upload-app-settings
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 --accept-self-signed-certs upload-app-settings
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 --accept-self-signed-certs compile-app-settings
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 --accept-self-signed-certs compile-app-settings backup-app-settings upload-app-settings
+
+#Updade package json
+npm install --save-dev cht-conf-test-harness chai mocha
+
+#Configure and upload custom translation (custom field labels)
+[File] translations/messages-en.properties
+    > [Line] {field} = "custom label"
+>> cht --url=https://medic:2e64k1b65N@localhost:8444 --accept-self-signed-certs upload-custom-translations
+
+docker run -p 5984:5984 -d couchdb
+
+Hierarchy
+---------------------------------
+> Health Facility/District/District Hospital    [district_hospital]
+	> Health Center/Area/Health Center/         [health_center]
+		> Area (Household)(Clinic)              [clinic]
+			> Person                            [person]
+---------------------------------
+
+#A9A9A9

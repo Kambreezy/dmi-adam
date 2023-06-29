@@ -1,0 +1,8 @@
+{
+  "title": "Contact Tracing",
+  "icon": "icon-person-tracing-gray",
+  "context": {
+    "person": false,
+    "place": false
+  }
+}
